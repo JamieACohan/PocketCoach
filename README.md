@@ -1,3 +1,1 @@
 # PocketCoach-IonicApp
-# PocketCoach
-# PocketCoach

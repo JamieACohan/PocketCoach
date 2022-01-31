@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+      <ion-buttons end>
+          <button ion-button icon-only (click)="updateWeight()">
+            <ion-icon name="checkmark"></ion-icon>
+          </button>
+        </ion-buttons>
+    <ion-title>Add Weight</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <form [formGroup]="myForm">
+      <ion-grid>
+        <ion-row style="border-bottom: 1px solid black">
+          <ion-col>
+              <ion-label style="font-size: 20px">Weight(kg):</ion-label>
+          </ion-col>
+          <ion-col>
+              <ion-input style="float: right !important; font-size: 20px" formControlName="weight" type="text" [(ngModel)]="weight"></ion-input>
+            </ion-col>
+        </ion-row>
+
+        <ion-row style="border-bottom: 1px solid black">
+            <ion-col>
+                <ion-label style="font-size: 20px">Date:</ion-label>
+            </ion-col>
+            <ion-col>
+                <p style="font-size: 20px; color: black">{{splitTimestamp()}}</p>
+            </ion-col>
+          </ion-row>
+
+          <ion-row style="border-bottom: 1px solid black">
+              <ion-col>
+                  <ion-label style="font-size: 20px">Progress Photo:</ion-label>
+              </ion-col>
+              <ion-col>
+                  <button ion-button icon-only (click)="addPhoto()" style="margin-left: 20px">
+                      <ion-icon name="camera"></ion-icon>
+                    </button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="rowStyle" *ngIf="image">
+              <ion-card class="rounded-corners">
+                
+                <img [src]="image" class="rounded-corners">
+              </ion-card>
+            </ion-row>
+      </ion-grid>
+  
+  </form>
+
+  </ion-content>

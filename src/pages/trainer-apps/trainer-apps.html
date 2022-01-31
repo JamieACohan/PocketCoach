@@ -1,0 +1,39 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  <ion-title>Upcoming Appointments</ion-title>
+</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class="container">
+      
+        <div class="app-card" *ngFor="let app of appointments | async ">
+            <div class="card">
+              <div class="desc">
+                  <h2>Client Name: {{app.clientName}}</h2>
+                  <p><b>Date: </b>{{toDate(app.startTime)}}</p>
+                  <p><b>Timeslot: </b>{{toTime(app.startTime)}} - {{toTime(app.endTime)}}</p>
+                  <p><b>Gym: </b>{{app.gym.name}}</p>
+                  <p><b>Training: </b>{{app.title}} | {{app.notes}}</p>
+              </div>
+            <div class="reject">
+              <button ion-button block gradient-left box-shadow (click)="cancelApp(app.docID)">Cancel</button>
+          </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="container-Empty" *ngIf="apps.length == 0">
+        <img src="../assets/imgs/noApp.png" >
+      <h2>You don't have any appointments.</h2>
+    </div>
+
+</ion-content>

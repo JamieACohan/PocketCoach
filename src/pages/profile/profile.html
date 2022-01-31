@@ -1,0 +1,348 @@
+
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Profile</ion-title>
+    </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+    
+    <div class="container custom-floating-form" >
+          <div class="user-image" (click)="addPhoto()">
+            <img [src]="image" *ngIf="image">
+            <img [src]="user.image" *ngIf="user.image && !image">
+            <img src="../assets/imgs/person.jpg" *ngIf="!user.image && !image">
+          </div>
+           <h2>{{user.displayName}}</h2>
+ 
+        <div class="scroll">
+   
+          
+            <form [formGroup]="myForm">
+          
+                    <ion-card class="about">
+                        <h2>About Me</h2>
+                        <ion-list>
+                        <ion-grid>
+                            <ion-row>
+                    
+                                <ion-item no-lines style="background-color: #10C488">
+                                  <ion-label style="text-align: left;">Display Name:</ion-label>
+                                  <ion-input style="color: white" formControlName="displayName" type="text" [(ngModel)]="user.displayName" [class.invalid]="!myForm.controls.displayName.valid && myForm.controls.displayName.touched" placeholder="Display Name"></ion-input>
+                                </ion-item>
+                                <div class="validation-errors">
+                                    <ng-container *ngFor="let validation of validation_messages.displayName" >
+                                      <div class="error-message" *ngIf="myForm.get('displayName').hasError(validation.type) && (myForm.get('displayName').dirty || myForm.get('displayName').touched)">
+                                    {{ validation.message }}
+                                      </div>
+                                    </ng-container>
+                                  </div>
+                          
+                            </ion-row>
+                            <ion-row>
+                              
+                                <ion-item no-lines style="background-color: #10C488">
+                                  <ion-label style="text-align: left;">First Name:</ion-label>
+                                  <ion-input formControlName="firstName" type="text" [(ngModel)]="user.firstName" [class.invalid]="!myForm.controls.firstName.valid && myForm.controls.firstName.touched" placeholder="Forename"></ion-input>
+                                </ion-item>
+                                <div class="validation-errors">
+                                  <ng-container *ngFor="let validation of validation_messages.firstName" >
+                                    <div class="error-message" *ngIf="myForm.get('firstName').hasError(validation.type) && (myForm.get('firstName').dirty || myForm.get('firstName').touched)">
+                                  {{ validation.message }}
+                                    </div>
+                                  </ng-container>
+                                </div>
+                          
+                            </ion-row>
+          
+                            <ion-row>
+                              
+                                <ion-item no-lines style="background-color: #10C488">
+                                  <ion-label style="text-align: left;">Surname:</ion-label>
+                                  <ion-input formControlName="surname" type="text" [(ngModel)]="user.surname" [class.invalid]="!myForm.controls.surname.valid && myForm.controls.surname.touched" placeholder="Surname"></ion-input>
+                                </ion-item>
+                                <div class="validation-errors">
+                                  <ng-container *ngFor="let validation of validation_messages.surname" >
+                                    <div class="error-message" *ngIf="myForm.get('surname').hasError(validation.type) && (myForm.get('surname').dirty || myForm.get('surname').touched)">
+                                  {{ validation.message }}
+                                    </div>
+                                  </ng-container>
+                                </div>
+                          
+                            </ion-row>
+          
+                            <ion-row>
+                              
+                                <ion-item no-lines style="background-color: #10C488">
+                                  <ion-label style="text-align: left;">Age:</ion-label>
+                                  <ion-input formControlName="age" min="0" max="110" type="number" [(ngModel)]="user.age" [class.invalid]="!myForm.controls.age.valid && myForm.controls.age.touched" placeholder="Age"></ion-input>
+                                </ion-item>
+                                <div class="validation-errors">
+                                  <ng-container *ngFor="let validation of validation_messages.age" >
+                                    <div class="error-message" *ngIf="myForm.get('age').hasError(validation.type) && (myForm.get('age').dirty || myForm.get('age').touched)">
+                                  {{ validation.message }}
+                                    </div>
+                                  </ng-container>
+                                </div>
+                          
+                            </ion-row>
+          
+                            <ion-row>
+                              
+                                <ion-item no-lines style="background-color: #10C488">
+                                  <ion-label style="text-align: left;">Email:</ion-label>
+                                  <ion-input formControlName="email" type="text" [(ngModel)]="user.email" [class.invalid]="!myForm.controls.email.valid && myForm.controls.email.touched" placeholder="Email"></ion-input>
+                                </ion-item>
+                                <div class="validation-errors">
+                                  <ng-container *ngFor="let validation of validation_messages.email" >
+                                    <div class="error-message" *ngIf="myForm.get('email').hasError(validation.type) && (myForm.get('email').dirty || myForm.get('email').touched)">
+                                  {{ validation.message }}
+                                    </div>
+                                  </ng-container>
+                                </div>
+                          
+                            </ion-row>
+          
+                            <!-- <ion-row>
+                              
+                                <ion-item no-lines style="background-color: #10C488">
+                                  <ion-label style="text-align: left; color: white">Password:</ion-label>
+                                  <ion-input type="text" [(ngModel)]="user.password"></ion-input>
+                                </ion-item>
+                          
+                            </ion-row> -->
+          
+                            <ion-row>
+                              
+                                <ion-item no-lines style="background-color: #10C488">
+                                  <ion-label style="text-align: left;">Country:</ion-label>
+                                  <ion-input formControlName="country" type="text" [(ngModel)]="user.country" [class.invalid]="!myForm.controls.country.valid && myForm.controls.country.touched" placeholder="Country"></ion-input>
+                                </ion-item>
+                                <div class="validation-errors">
+                                  <ng-container *ngFor="let validation of validation_messages.country" >
+                                    <div class="error-message" *ngIf="myForm.get('country').hasError(validation.type) && (myForm.get('country').dirty || myForm.get('country').touched)">
+                                  {{ validation.message }}
+                                    </div>
+                                  </ng-container>
+                                </div>
+                          
+                            </ion-row>
+          
+                            <ion-row>
+                              
+                                <ion-item no-lines style="background-color: #10C488">
+                                  <ion-label style="text-align: left;">City:</ion-label>
+                                  <ion-input formControlName="city" type="text" [(ngModel)]="user.city" [class.invalid]="!myForm.controls.city.valid && myForm.controls.city.touched" placeholder="City"></ion-input>
+                                </ion-item>
+                                <div class="validation-errors">
+                                  <ng-container *ngFor="let validation of validation_messages.city" >
+                                    <div class="error-message" *ngIf="myForm.get('city').hasError(validation.type) && (myForm.get('city').dirty || myForm.get('city').touched)">
+                                  {{ validation.message }}
+                                    </div>
+                                  </ng-container>
+                                </div>
+                          
+                            </ion-row>
+          
+                          </ion-grid>
+                        </ion-list>
+                    </ion-card> 
+                   
+              </form>
+
+
+        <form [formGroup]="achiForm">
+          <ion-card class="achievements" *ngIf="user.role == 2">
+            <h2>Achievements</h2>
+        
+            <ion-row>
+        
+              <ion-item no-lines style="background-color: #10C488">
+                <ion-label style="text-align: left;color: #4d4d4d">Certification:</ion-label>
+                <ion-input formControlName="certification" type="text" [(ngModel)]="user.certification"
+                  [class.invalid]="!achiForm.controls.certification.valid && achiForm.controls.certification.touched"
+                  placeholder="Certification"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.certification">
+                  <div class="error-message"
+                    *ngIf="achiForm.get('certification').hasError(validation.type) && (achiForm.get('certification').dirty || achiForm.get('certification').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-row>
+        
+        
+        
+            <ion-row>
+        
+              <ion-item no-lines style="background-color: #10C488">
+                <ion-label style="text-align: left;color: #4d4d4d">Years of Experience:</ion-label>
+                <ion-input formControlName="experience" type="number" [(ngModel)]="user.experience"
+                  [class.invalid]="!achiForm.controls.experience.valid && achiForm.controls.experience.touched"
+                  placeholder="Experience"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.experience">
+                  <div class="error-message"
+                    *ngIf="achiForm.get('experience').hasError(validation.type) && (achiForm.get('experience').dirty || achiForm.get('experience').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+        
+            </ion-row>
+            
+            <ion-row>
+            
+              <ion-item no-lines style="background-color: #10C488">
+                <ion-label style="text-align: left;color: #4d4d4d">Specialties:</ion-label>
+              <ion-input formControlName="specialties" type="text" [(ngModel)]="user.specialties"
+                [class.invalid]="!achiForm.controls.specialties.valid && achiForm.controls.specialties.touched"
+                placeholder="Specialties"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.specialties">
+                  <div class="error-message"
+                    *ngIf="achiForm.get('specialties').hasError(validation.type) && (achiForm.get('specialties').dirty || achiForm.get('specialties').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+
+
+            </ion-row>
+        
+          </ion-card>
+        </form>
+
+        <form [formGroup]="subForm">
+          <ion-card class="subscription">
+            <h2>Subscription Details</h2>
+           
+            <ion-grid *ngIf="user.role == 2">
+                <ion-row>
+                      
+                  <ion-item no-lines style="background-color: #10C488">
+                    <ion-label style="text-align: left;color: #4d4d4d">Price:</ion-label>
+                  <ion-input formControlName="price" type="number" [(ngModel)]="user.price"
+                  [class.invalid]="!subForm.controls.price.valid && subForm.controls.price.touched"
+                  placeholder="Price"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.price">
+                    <div class="error-message"
+                      *ngIf="subForm.get('price').hasError(validation.type) && (subForm.get('price').dirty || subForm.get('price').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-row>
+
+              <ion-row>
+                      
+                  <ion-item no-lines style="background-color: #10C488">
+                    <ion-label style="text-align: left;color: #4d4d4d">Duration(Days):</ion-label>
+                  <ion-input formControlName="duration" type="number" [(ngModel)]="user.duration"
+                  [class.invalid]="!subForm.controls.duration.valid && subForm.controls.duration.touched"
+                  placeholder="Duration"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.duration">
+                    <div class="error-message"
+                      *ngIf="subForm.get('duration').hasError(validation.type) && (subForm.get('duration').dirty || subForm.get('duration').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-row>
+
+              <ion-row>
+                      
+                <ion-item no-lines style="background-color: #10C488">
+                  <ion-label style="text-align: left;color: #4d4d4d">Max Clients:</ion-label>
+                <ion-input formControlName="maxClients" type="number" [(ngModel)]="user.maxClients"
+                [class.invalid]="!subForm.controls.maxClients.valid && subForm.controls.maxClients.touched"
+                placeholder="Max Clients"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.maxClients">
+                  <div class="error-message"
+                    *ngIf="subForm.get('maxClients').hasError(validation.type) && (subForm.get('maxClients').dirty || subForm.get('maxClients').touched)">
+                    {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+          
+            </ion-row>
+       
+
+            <ion-row style="background-color: #10C488; margin: 8px">            
+ 
+                <p style="text-align: left; color: #4d4d4d; font-size: 16px; margin-right: 8px; padding-left: 10px">Client Count: </p> <p style="text-align: right; color: white; font-size: 17px">{{user.clientCount}}</p>
+
+        
+          </ion-row>
+          </ion-grid>
+
+          <ion-grid *ngIf="user.role == 1 && user.hasPaid == true">
+              <ion-row style="background-color: #10C488; margin: 8px">
+
+                <p style="text-align: left; color: #4d4d4d; font-size: 17px; margin-right: 8px;">Expiry Date: </p> <p style="text-align: right; color: white; font-size: 17px">{{user.expiryDate}}</p>
+
+              </ion-row>
+
+              <ion-row style="background-color: #10C488; margin: 8px">
+
+                  <p style="text-align: left; color: #4d4d4d; font-size: 17px; margin-right: 8px;">Time Remaining: </p> <p style="text-align: right; color: white; font-size: 17px">{{subExpiry}} days</p>
+  
+                </ion-row>
+          </ion-grid>
+
+          <ion-grid *ngIf="user.role == 1 && user.hasPaid == false">
+              <ion-row style="background-color: #10C488; margin: 8px">
+
+                <p style="text-align: left; color: #4d4d4d; font-size: 17px; margin-right: 8px;">No active subscription </p>
+
+              </ion-row>
+
+            
+          </ion-grid>
+
+          <div class="floating" *ngIf="user.role == 1 && user.hasPaid == true">
+              <button ion-button block gradient-left box-shadow (click)="openRenewModal()">Renew Subscription</button>
+          </div>
+
+          <div class="cancel" *ngIf="user.role == 1 && user.hasPaid == true">
+            <button ion-button block gradient-left box-shadow (click)="cancelSub()">Cancel Subscription</button>
+        </div>
+         
+
+        </ion-card>
+          
+
+
+      </form>
+
+       
+
+        </div>
+    </div>
+    <div class="floating" *ngIf="user.role == 1">
+      <button ion-button block gradient-left box-shadow (click)="save()" [disabled]="!myForm.valid">Update Profile</button>
+  </div>
+
+  <div class="floating" *ngIf="user.role == 2">
+      <button ion-button block gradient-left box-shadow (click)="save()" [disabled]="!myForm.valid || !subForm.valid || !achiForm.valid">Update Profile</button>
+  </div>
+  </ion-content>
+
+  
+    

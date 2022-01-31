@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>TrainerHub</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="hasPaid == false">
+
+  <div class="container" style="padding-top: 25%; text-align: center">
+
+    <img src="../assets/imgs/error.png" />
+
+    <p class="formidable-light">No trainer assigned</p>
+    <button ion-button secondary (click)="navToTrainerListPage()">
+      <p style="font-size: 25px; color: white">Browse Trainers <ion-icon name="arrow-dropright-circle"
+          style="font-size: 25px; color: white"></ion-icon>
+      </p>
+    </button>
+
+
+  </div>
+</ion-content>
+
+<ion-content padding *ngIf="hasPaid == true || getUserRole() == 2">
+
+
+  <div class="container">
+    <p class="formidable">TrainerHub</p>
+    <p *ngIf="getTrainerName() != null" class="formidable-light">Trainer: {{getTrainerName()}}</p>
+    <p *ngIf="getTrainerName() == null" class="formidable-light">Client: {{clientName}}</p>
+
+    <ion-grid class="menu">
+      <ion-row *ngFor="let i of rows;">
+        <ion-col *ngFor="let menu of menus | slice:(i*2):(i+1)*2">
+          <ion-card (click)="open(menu)">
+            <img [src]="menu.icon" alt="">
+            <div class="desc">
+              <h2 [innerHTML]="menu.head"></h2>
+              <p [innerHTML]="menu.sub"></p>
+            </div>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

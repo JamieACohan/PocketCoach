@@ -1,0 +1,28 @@
+page-edit-goals {
+    .scroll-content{
+        overflow-y: hidden;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    
+        .scroll{
+           overflow-y: auto;
+              position: relative;
+              height: 90vw;
+              margin: 5px 0;
+        }
+      }
+      .floating {
+        position: fixed;
+        bottom: 30px;
+        width: 100%;
+        padding: 30px;
+        z-index:99;
+        .button {
+          border-radius: 44px!important;
+        }
+      }
+}

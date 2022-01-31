@@ -1,0 +1,47 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end *ngIf="getUserRole() == 1">
+      <button ion-button icon-only (click)="addNewWeight()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Progress</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+<h3 style="text-align:center">Weight tracking </h3>
+
+<ion-list style="margin: 0%">
+  
+        <ion-item *ngFor="let p of progress | async" style="margin: 0%">
+            <ion-card class="progress-card">
+              <ion-grid>
+                <ion-row>
+                 
+                      <p><b>Date: </b>{{p.weightUpdated}} <br />
+                        <b>Current weight: </b>{{p.currentWeight}}kg
+                      </p>
+                      
+                      
+                      <img [src]="p.image" *ngIf="p.image">
+                    
+                </ion-row>
+              </ion-grid>
+           
+            
+          </ion-card>
+        </ion-item>
+  
+</ion-list>
+
+</ion-content>

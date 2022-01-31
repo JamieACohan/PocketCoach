@@ -1,0 +1,44 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Client List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="container">
+
+    <div class="trainer-card" *ngFor="let client of clientData | async" (click)="openTrainerHub(client)">
+      <img (click)="openTrainerHub(client)" [src]="client.image" />
+      <img src="../assets/imgs/person.jpg" *ngIf="!client.image">
+      <div class="card">
+        <div class="desc">
+          <h2>{{client.clientName}}</h2>
+          <p>{{client.city}}, {{client.country}}</p>
+          <p>Expiry Date: {{client.expiryDate}}</p>
+        </div>
+        <div class="more">
+          <p>
+
+            {{client.unreadMessages}} <ion-icon name="mail"></ion-icon>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container-Empty" *ngIf="clientList.length == 0">
+    <img src="../assets/imgs/empty.png">
+    <h2>You don't have any clients yet.</h2>
+  </div>
+
+</ion-content>

@@ -1,0 +1,92 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Edit</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="main-view">
+  <div class="modal_content">
+
+    <div id="popover">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-12>
+            <p><b>{{ journalItem.itemName }} - {{journalItem.brandName}}</b></p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <p>Servings</p>
+            <ion-item no-lines>
+              <ion-input type="number" [(ngModel)]="journalItem.noServings" min=1></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-12>
+            <p>Serving Size</p>
+            <ion-item *ngIf="entryData.defaultServingSize > 0 && journalItem.selectedServingSize == 1" no-lines>
+
+
+              <ion-select [(ngModel)]="journalItem.selectedServingSize">
+                <ion-option selected value="1">{{entryData.defaultServingSize}}g</ion-option>
+                <ion-option value="2">1g</ion-option>
+                <ion-option value="3">100g</ion-option>
+
+
+              </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="entryData.defaultServingSize > 0 && journalItem.selectedServingSize == 2" no-lines>
+
+
+              <ion-select [(ngModel)]="journalItem.selectedServingSize">
+                <ion-option value="1">{{entryData.defaultServingSize}}g</ion-option>
+                <ion-option selected value="2">1g</ion-option>
+                <ion-option value="3">100g</ion-option>
+
+
+              </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="entryData.defaultServingSize > 0 && journalItem.selectedServingSize == 3" no-lines>
+
+
+              <ion-select [(ngModel)]="journalItem.selectedServingSize">
+                <ion-option value="1">{{entryData.defaultServingSize}}g</ion-option>
+                <ion-option value="2">1g</ion-option>
+                <ion-option selected value="3">100g</ion-option>
+
+
+              </ion-select>
+
+
+
+
+            </ion-item>
+            <ion-item *ngIf="entryData.defaultServingSize < 1" no-lines>
+
+              <ion-select [(ngModel)]="journalItem.selectedServingSize">
+                <ion-option selected value="4">{{journalItem.selectedServingType}}</ion-option>
+
+
+
+              </ion-select>
+
+
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <button ion-button (click)="closeEditModal()">Close</button>
+    <button ion-button (click)="saveEditModal()"
+      [disabled]="journalItem.noServings <= 0 || journalItem.noServings >= 500">Save</button>
+
+  </div>
+
+</ion-content>

@@ -1,0 +1,192 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="confirmEntry()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>{{ journalItem.itemName }}</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="main-view" padding>
+
+
+  <div id="popover">
+
+    <h5>{{ journalItem.itemName }} - {{journalItem.brandName}}</h5>
+    <br>
+    <br>
+
+    <ion-list>
+      <ion-item (click)="openAddModal()" style="float: left">
+        <h2>Servings:</h2>
+        <h3 style="float: right">{{journalItem.noServings}}</h3>
+
+      </ion-item>
+
+      <ion-item (click)="openAddModal()">
+        <h2>Serving Size:</h2>
+        <h3 style="float: right">{{journalItem.selectedServingType}}</h3>
+
+      </ion-item>
+
+    </ion-list>
+
+    <ion-grid>
+
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Calories:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.calories | number:'.1-1')}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Fat:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.fat | number:'.1-1')}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Carbs:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.carbs | number:'.1-1')}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Protein:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.protein | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Saturated fat:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.saturated_fat | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Trans fatty acid:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.trans_fatty_acid | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Polyunsaturated fat:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.polyunsaturated_fat | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Monounsaturated fat:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.monounsaturated_fat | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Cholesterol:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.cholesterol | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Sodium:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.sodium | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Dietary fiber:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.dietary_fiber | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Sugars:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.sugars | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Vitamin_a:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.vitamin_a | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Vitamin_c:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.vitamin_c | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Calcium:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.calcium | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <p><b>Iron:</b></p>
+        </ion-col>
+        <ion-col col-6>
+          <p>{{(journalItem.iron | number:'.1-1')}}</p>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+
+
+  <!-- <button ion-button block (click)="addJournalItem(food, journalItem)">Add Item</button> -->
+
+</ion-content>

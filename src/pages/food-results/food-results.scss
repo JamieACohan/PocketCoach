@@ -1,0 +1,25 @@
+page-food-results {
+
+    .results{
+        padding: 2px;
+    }
+
+    .item{
+        //   max-height: 50px;
+        border: 0.5px solid Gainsboro;
+        height: 60px!important;
+        margin-top: 5px;
+        
+        
+    
+        h2{
+          font-size: 13px;
+        }
+        h3{
+          font-size: 11px;
+        }
+        p{
+          font-size: 10px;
+        }
+      }
+}

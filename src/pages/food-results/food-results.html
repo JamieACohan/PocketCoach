@@ -1,0 +1,75 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Food Search</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-searchbar (search)="search($event.target.value)" [ngClass]="{'show-search': showSearch}"></ion-searchbar>
+
+
+
+
+  <div *ngIf="foods">
+
+
+
+    <ion-list *ngFor="let food of foods" style="margin: 0%">
+      <ion-item (click)="detailsPage(food)">
+
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h2><b>{{ food.fields.item_name }}</b></h2>
+              <h3>{{food.fields.brand_name}}</h3>
+            </ion-col>
+            <ion-col>
+              <h3 style="float:right">{{food.fields.nf_calories}} kcals</h3>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-item>
+    </ion-list>
+
+
+  </div>
+
+  <div *ngIf="!foods">
+    <h3 style="margin-top: 5%">Recent Foods:</h3>
+
+    <ion-list *ngFor="let entry of entries" style="margin: 0%">
+      <ion-item>
+
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <h2><b>{{ entry.data().itemName }}</b></h2>
+              <h3>{{entry.data().brandName }}</h3>
+            </ion-col>
+            <ion-col>
+              <h3 style="float:right">{{entry.data().calories }} kcals</h3>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-item>
+    </ion-list>
+
+
+  </div>
+
+
+
+
+</ion-content>

@@ -1,0 +1,66 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Trainer Details</ion-title>
+
+
+
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <div class="container">
+    <ion-row class="user-image">
+      <!-- <ion-col col-3 text-left>
+            <button ion-button box-shadow gradient-left>
+              <ion-icon name="call"></ion-icon>
+            </button>
+          </ion-col> -->
+      <ion-col text-center>
+        <div class="image">
+          <img [src]="trainerData.image" *ngIf="trainerData.image" />
+          <img src="../assets/imgs/person.jpg" *ngIf="!trainerData.image" />
+        </div>
+      </ion-col>
+      <!-- <ion-col col-3 text-right>
+            <button ion-button box-shadow gradient-right>
+              <ion-icon name="md-text"></ion-icon>
+            </button>
+          </ion-col> -->
+    </ion-row>
+    <div class="user-profile">
+      <h2>{{trainerData.firstName}} {{trainerData.surname}} </h2>
+      <p>{{trainerData.city}}, {{trainerData.country}} </p>
+
+      <button ion-button gradient-left box-shadow [disabled]="hasPaid() == true" (click)="toPayment()">Hire
+        Trainer</button>
+    </div>
+
+    <ion-card box-shadow>
+      <ion-item>
+        <ion-icon item-left name="person" color="primary"></ion-icon>
+        <h2>Personal Info</h2>
+        <p><b>Age: </b>{{trainerData.age}}</p>
+        <p><b>Gender: </b>{{trainerData.sex}}</p>
+      </ion-item>
+    </ion-card>
+    <ion-card box-shadow>
+      <ion-item>
+        <ion-icon item-left name="podium" color="primary"></ion-icon>
+        <h2>Achievements and History</h2>
+        <p><b>Years of Experience: </b>{{trainerData.experience}}</p>
+        <p><b>Area of expertise: </b>{{trainerData.specialties}}</p>
+        <p><b>Certification: </b>{{trainerData.certification}}</p>
+      </ion-item>
+    </ion-card>
+  </div>
+
+</ion-content>

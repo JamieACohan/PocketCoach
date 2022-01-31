@@ -1,0 +1,74 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+  <ion-title>Goals</ion-title>
+</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <div class="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-icon class="title" name="person"></ion-icon>Personal Goals
+        <ion-fab top right class="personal">
+          <button ion-fab mini (click)="editGoals()"><ion-icon name="md-create"></ion-icon></button>
+          
+        </ion-fab>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="info">
+          <p class="label">Current Weight</p>
+          <p *ngFor="let entry of goalData">{{entry.data().currentWeight}}kg</p>
+          <p class="label">Goal Weight</p>
+          <p *ngFor="let entry of goalData">{{entry.data().goalWeight}}kg</p>
+          <p class="label">Weekly Goal</p>
+          <p *ngFor="let entry of goalData">{{entry.data().weeklyGoal}}kg</p>
+          <p class="label">Activity Level</p>
+          <p *ngFor="let entry of goalData">{{getActivityLevel()}}</p>
+          <p class="label">Height</p>
+          <p *ngFor="let entry of goalData">{{entry.data().height}}cm</p>
+          
+      
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-icon class="title" name="heart"></ion-icon>Nutritional Goals
+        <ion-fab top right class="personal">
+          <button ion-fab mini (click)="editMacros()"><ion-icon name="md-create"></ion-icon></button>
+          
+        </ion-fab>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="info">
+          <p class="label">Calories</p>
+          <p *ngFor="let entry of goalData">{{entry.data().goalCalories}}kcals</p>
+          <p class="label">Protein</p>
+          <p *ngFor="let entry of goalData">{{entry.data().goalProtein.toFixed(1)}}g</p>
+          <p class="label">Fat</p>
+          <p *ngFor="let entry of goalData">{{entry.data().goalFat.toFixed(1)}}g</p>
+          <p class="label">Carbs</p>
+          <p *ngFor="let entry of goalData">{{entry.data().goalCarbs.toFixed(1)}}g</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+</ion-content>
+
+
+<!-- <div class="floating">
+  <button ion-button block gradient-left box-shadow (click)="add()">Update Profile</button>
+</div> -->

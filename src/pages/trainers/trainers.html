@@ -1,0 +1,74 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Trainers</ion-title>
+
+   
+
+    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div class="container" *ngFor="let trainer of trainers | async">
+      
+        <div class="trainer-card" *ngIf="trainer.isAvailable == true" >
+            <img (click)="openViewTrainerPage(trainer)" [src]="trainer.image"/>
+            <img (click)="openViewTrainerPage(trainer)" src="../assets/imgs/person.jpg" *ngIf="!trainer.image"/>
+            <div class="card">
+              <div class="desc">
+                  <h2>{{trainer.firstName}} {{trainer.surname}}</h2>
+                  <p>Subscription: {{trainer.duration}} days</p>
+                  <p>Price: €{{trainer.price}}</p>
+                  <p>Spaces left: {{trainer.spacesLeft}}</p>
+                  <p>Available <ion-icon name="checkmark"></ion-icon></p>
+                  
+                  
+              </div>
+            </div>
+
+         
+
+      </div>
+
+      <div class="trainer-card2" *ngIf="trainer.isAvailable == false"  >
+          <img (click)="openViewTrainerPage(trainer)" [src]="trainer.image"/>
+          <img (click)="openViewTrainerPage(trainer)" src="../assets/imgs/person.jpg" *ngIf="!trainer.image"/>
+        <div class="card">
+          <div class="desc">
+              <h2>{{trainer.firstName}} {{trainer.surname}}</h2>
+              <p>Subscription duration: {{trainer.duration}} days</p>
+              <p>Price: €{{trainer.price}}</p>
+              <p>Spaces left: {{trainer.spacesLeft}}</p>              
+              <p>Not Available <ion-icon name="close"></ion-icon></p>
+              <button ion-button icon-only color="danger" clear (click)="watchlist(trainer)" *ngIf="onwatchList == true">
+                Remove From Watchlist
+              </button>
+              <button ion-button icon-only color="primary" clear (click)="watchlist(trainer)" *ngIf="onwatchList == false">
+                Add to Watchlist
+              </button>
+              
+          </div>
+          <div class="more">
+            <p>
+             
+              {{trainer.watchersCount || 0}} <ion-icon name="eye"></ion-icon>
+            </p>
+          
+          </div>
+        </div>
+
+     
+
+  </div>
+    </div>
+
+  
+</ion-content>

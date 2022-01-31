@@ -1,0 +1,293 @@
+<ion-header>
+  <ion-navbar color="primary">
+
+      <ion-buttons end>
+          <button ion-button icon-only clear (click)="close()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-buttons>
+
+    <ion-title>Macro Breakdown</ion-title>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content>
+
+
+    <ion-toolbar>
+        <ion-buttons start>
+            <button ion-button icon-only (click)="decrement()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{now | date:'EEEE, MMM d'}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="increment()">
+              <ion-icon name="arrow-dropright"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+
+<div class="container">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+      </ion-col>
+      <ion-col>
+        <h4 style="float: right">Total</h4>
+      </ion-col>
+      <ion-col>
+        <h4 style="float: right">Goal</h4>
+      </ion-col>
+      <ion-col>
+        <h4 style="float: right">Left</h4>
+      </ion-col>
+    </ion-row>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Protein</h4>
+            </ion-col>
+            <ion-col size="2">
+              <p>{{(journalItem.protein | number) || 0}}</p>
+            </ion-col>
+            <ion-col size="2">
+              <p>{{(goalMacros.protein | number)  || 0}}</p>
+            </ion-col>
+            <ion-col size="2">
+              <p>{{(goalMacros.protein  - journalItem.protein).toFixed(1)  || 0}}</p>
+            </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col width-25 size="12">
+              <h4>Carbohydrates</h4>
+            </ion-col>
+            <ion-col align-self-center>
+              <p>{{(journalItem.carbs | number) || 0}}</p>
+              </ion-col>
+              <ion-col size="2">
+                  <p>{{(goalMacros.carbs | number) || 0}}</p>
+              </ion-col>
+              <ion-col size="2">
+                <p>{{(goalMacros.carbs  - journalItem.carbs).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Fat</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.fat | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.fat | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.fat  - journalItem.fat).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Saturated fat</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.saturated_fat | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.saturated_fat | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.saturated_fat  - journalItem.saturated_fat).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Trans fatty acid</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.trans_fatty_acid | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.trans_fatty_acid | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.trans_fatty_acid  - journalItem.trans_fatty_acid).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Polyunsaturated fat</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.polyunsaturated_fat | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.polyunsaturated_fat | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.polyunsaturated_fat  - journalItem.polyunsaturated_fat).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Monounsaturated fat</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.monounsaturated_fat | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.monounsaturated_fat | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.monounsaturated_fat  - journalItem.monounsaturated_fat).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Cholesterol</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.cholesterol | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.cholesterol | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.cholesterol  - journalItem.cholesterol).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Sodium</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.sodium | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.sodium | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.sodium  - journalItem.sodium).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Dietary fiber</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.dietary_fiber | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.dietary_fiber | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.dietary_fiber  - journalItem.dietary_fiber).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Vitamin_a</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.vitamin_a | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.vitamin_a | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.vitamin_a  - journalItem.vitamin_a).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Vitamin_c</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.vitamin_c | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.vitamin_c | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.vitamin_c  - journalItem.vitamin_c).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Calcium</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.calcium | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.calcium | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.calcium  - journalItem.calcium).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+    <ion-item>
+      <ion-row>
+          <ion-col size="6">
+            <h4>Sugars</h4>
+          </ion-col>
+          <ion-col>
+            <p>{{(journalItem.sugars | number:'.1-1') || 0}}</p>
+            </ion-col>
+            <ion-col>
+              <p>{{(goalMacros.sugars | number:'.1-1') || 0}}</p>
+            </ion-col>
+            <ion-col>
+              <p>{{(goalMacros.sugars  - journalItem.sugars).toFixed(1)  || 0}}</p>
+            </ion-col>
+        </ion-row>
+  </ion-item>
+    <ion-item>
+        <ion-row>
+            <ion-col size="6">
+              <h4>Iron</h4>
+            </ion-col>
+            <ion-col>
+              <p>{{(journalItem.iron | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.iron | number:'.1-1') || 0}}</p>
+              </ion-col>
+              <ion-col>
+                <p>{{(goalMacros.iron  - journalItem.iron).toFixed(1)  || 0}}</p>
+              </ion-col>
+          </ion-row>
+    </ion-item>
+  </ion-grid>
+</div>
+
+</ion-content>

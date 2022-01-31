@@ -1,0 +1,89 @@
+page-trainer-apps {
+    .container {
+        .app-card {
+          display: block;
+          position: relative;
+            margin: 15px;
+          .card {
+            background: color($colors, semi-light);
+            border: 1px solid color($colors, semi-light);
+            border-radius: 16px;
+            width: 100%;
+            padding: 8px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            word-wrap: break-word;
+            .desc {
+              display: inline-block;
+              width: 75%;
+              padding-bottom: 15px;
+              h2,
+              p {
+                margin: 1px 0 0;
+              }
+              h2 {
+                font-size: 1.6rem;
+                font-weight: 600 !important;
+                color: color($colors, dark);
+              }
+              p {
+                font-size: 1.2rem;
+                color: black;
+              }
+            
+            }
+            .accept {
+         
+                float: right;
+                width: 30%;
+                
+                z-index:99;
+                .button {
+                  border-radius: 44px!important;
+                  border: 1px solid whitesmoke;
+                  background-color: green;
+                }
+              }
+              .reject {
+         
+                float: right;
+                width: 25%;
+                
+                z-index:99;
+                .button {
+                  border-radius: 44px!important;
+                  border: 1px solid whitesmoke;
+                  background-color: red;
+                }
+              }
+         
+          }
+        }
+      }
+    
+    p,h2 {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    
+    .container-Empty{
+      text-align: center;
+      position: relative;
+      top: 12%;
+
+      h2{
+        font-size: 20px;
+      }
+      img {
+        position: center;
+        
+        
+        text-align: center;
+        width: 70%;
+        height: 40%;
+       
+      }
+    }
+}

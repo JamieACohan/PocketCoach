@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <small>{{ commentsCount || 0}} people have commented.</small>
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only clear (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+
+    <ion-item *ngFor="let comment of comments | async">
+      <ion-icon item-left name="ios-chatbubbles-outline"></ion-icon>
+
+      <h2>
+        <small>{{ comment.content }}</small>
+      </h2>
+      <p>
+        <small>
+          {{ comment.ownerName }} <i> {{ ago(comment.created) }} ago </i>
+        </small>
+      </p>
+
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

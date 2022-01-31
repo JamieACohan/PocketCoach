@@ -1,0 +1,47 @@
+<ion-menu [content]="content">
+
+    <ion-header>
+  
+        <ion-toolbar color="primary">
+            <ion-title>Menu</ion-title>
+          </ion-toolbar>
+      
+      </ion-header>
+  
+      <ion-content>
+          <ion-list>
+              <ion-item lines>
+                  <ion-avatar >
+                      <img [src]="user.image" *ngIf="user.image"/>
+                      <img src="../assets/imgs/person.jpg" *ngIf="!user.image">
+                  </ion-avatar>
+                  <h2>{{user.displayName}}</h2>
+              </ion-item>
+            <button ion-item detail-non block menuClose *ngFor="let p of pages" (click)="openPage(p.page)">
+              <ion-icon item-start [name]="p.icon"></ion-icon>
+              {{p.title}}
+            </button>
+          </ion-list>
+        </ion-content>
+  
+        <ion-footer>
+          <ion-toolbar color="primary">
+            <ion-row>
+             
+                  <button ion-button full clear ion-left (click)="logout()" style="font-size: 20px; margin-left:10px; color: white">
+                      <ion-icon name="exit" style="font-size: 20px; margin-right: 5px"></ion-icon>
+                      Logout
+                  </button>
+             
+  
+            </ion-row>
+          </ion-toolbar>
+        </ion-footer>
+  
+  </ion-menu>
+  
+  
+  
+  
+  
+  <ion-nav #content main [root]="rootPage"></ion-nav>

@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title *ngFor="let rec of recipient | async">
+      <img [src]="rec.image" *ngIf="rec.image">
+      <img src="../assets/imgs/person.jpg" *ngIf="!rec.image">
+      {{rec.firstName}} {{rec.surname}}</ion-title>
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="settings-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding #content>
+  <div class="container">
+    <div *ngFor="let mess of messages | async">
+      <div [ngClass]="mess.sender === currentUserID ? 'from-me': 'from-them'">
+        <p>{{mess.messageContent}}</p>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar class="custom-form">
+    <ion-item>
+      <ion-input name="message" placeholder="Type message here..." [(ngModel)]="message.messageContent"></ion-input>
+    </ion-item>
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="send()">
+        <ion-icon name="send" color="primary" item-left></ion-icon> Send
+      </button>
+    </ion-buttons>
+  </ion-toolbar>

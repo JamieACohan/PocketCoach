@@ -1,0 +1,27 @@
+page-add-new-weight {
+    form {
+        .rounded-corners
+        {
+            border-radius: 24px;
+        }
+        margin-bottom: 32px;
+        button {
+        margin-top: 20px;
+        }
+        }
+        p {
+        font-size: 0.8em;
+        color: #d2d2d2;
+        }
+        ion-label {
+        margin-left: 5px;
+        }
+        ion-input {
+        padding: 5px;
+        }
+
+        .rounded-corners
+        {
+            border-radius: 24px;
+        }
+}

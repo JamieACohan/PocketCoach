@@ -1,0 +1,212 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="macroBreakdown()">
+            <ion-icon name="pie"></ion-icon>
+        </button>
+      </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    
+    <ion-title>Journal</ion-title>
+  </ion-navbar>
+
+
+</ion-header>
+
+<ion-content>
+
+
+    <ion-toolbar>
+        <ion-buttons start>
+            <button ion-button icon-only (click)="decrement()">
+                <ion-icon name="arrow-dropleft"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{now | date:'EEEE, MMM d'}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="increment()">
+              <ion-icon name="arrow-dropright"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+
+    <ion-card style="border: 1px solid #10C488; height: 100px; font-size: 1.4rem;" >
+
+      <ion-card-content>
+       <ion-grid>
+         <ion-row>
+           <ion-col >
+            <p>Goal</p>
+           </ion-col>
+           <ion-col >
+             <p>Consumed</p>
+          </ion-col>
+          <ion-col>
+            <p>Left</p>
+          </ion-col>
+         </ion-row>
+         <ion-row>
+            <ion-col >
+             <p>{{(goalCalories | number:'.1-1') || 0}}</p>
+            </ion-col>
+            <ion-col >
+              <p>{{(getTotalCalories() | number:'.1-1') || 0}}</p>
+           </ion-col>
+           <ion-col>
+             <p>{{((goalCalories - getTotalCalories() | number:'.1-1')) || 0}}</p>
+           </ion-col>
+          </ion-row>
+       </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+
+  <div class="container">
+  <ion-list>
+    
+    <div class="breakfast" style="border:0.2px  black; margin-bottom: 10px; height: 10%">
+        <ion-item class="toolbarItems" no-lines>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                  <h4>Breakfast</h4>
+              </ion-col>
+              <ion-col>
+                  <h5 style="float:right">{{(getTotalCalsForBreakfast() | number:'.1-1')}}</h5>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-list *ngFor="let entry of entries | async" style="margin: 0%">
+          <ion-item *ngIf="entry.mealOption == 1  && entry.created == dateString"  (click)="selectEntry(entry)">
+              
+      
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                    <h2>{{entry.itemName}}</h2>
+                    <h3>{{entry.brandName}}</h3>
+                    <p>{{entry.selectedServingType}}</p>
+                </ion-col>
+                <ion-col>
+                    <h3 style="float:right">{{(entry.calories | number:'.1-1')}} cals</h3>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+  
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="lunch" style="border:0.2px  black; margin-bottom: 10px;">
+      <ion-item class="toolbarItems" no-lines>
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                    <h4>Lunch</h4>
+                </ion-col>
+                <ion-col>
+                    <h5 style="float:right">{{(getTotalCalsForLunch() | number:'.1-1')}}</h5>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-list *ngFor="let entry of entries | async" style="margin: 0%">
+            <ion-item *ngIf="entry.mealOption == 2  && entry.created == dateString"  (click)="selectEntry(entry)">
+                
+        
+            <ion-grid>
+                <ion-row>
+                  <ion-col>
+                      <h2>{{entry.itemName}}</h2>
+                      <h3>{{entry.brandName}}</h3>
+                      <p>{{entry.selectedServingType}}</p>
+                  </ion-col>
+                  <ion-col>
+                      <h3 style="float:right">{{(entry.calories | number:'.1-1')}} cals</h3>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+    
+        </ion-item>
+      </ion-list>
+    </div>
+
+    
+    <div class="dinner" style="border:0.2px  black; margin-bottom: 10px;">
+        <ion-item class="toolbarItems" no-lines>
+            <ion-grid>
+                <ion-row>
+                  <ion-col>
+                      <h4>Dinner</h4>
+                  </ion-col>
+                  <ion-col>
+                      <h5 style="float:right">{{(getTotalCalsForDinner() | number:'.1-1')}}</h5>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+            <ion-list *ngFor="let entry of entries | async" style="margin: 0%">
+              <ion-item *ngIf="entry.mealOption == 3  && entry.created == dateString"  (click)="selectEntry(entry)">
+                  
+          
+              <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                        <h2>{{entry.itemName}}</h2>
+                        <h3>{{entry.brandName}}</h3>
+                        <p>{{entry.selectedServingType}}</p>
+                    </ion-col>
+                    <ion-col>
+                        <h3 style="float:right">{{(entry.calories | number:'.1-1')}} cals</h3>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+      
+          </ion-item>
+        </ion-list>
+      </div>
+      <div class="snacks" style="border:0.2px  black; margin-bottom: 10px;">
+          <ion-item class="toolbarItems" no-lines>
+              <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                        <h4>Snacks</h4>
+                    </ion-col>
+                    <ion-col>
+                        <h5 style="float:right">{{(getTotalCalsForSnacks() | number:'.1-1')}}</h5>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+
+              <ion-list *ngFor="let entry of entries | async" style="margin: 0%">
+                  <ion-item *ngIf="entry.mealOption == 4  && entry.created == dateString"  (click)="selectEntry(entry)">
+                      
+              
+                  <ion-grid>
+                      <ion-row>
+                        <ion-col>
+                            <h2>{{entry.itemName}}</h2>
+                            <h3>{{entry.brandName}}</h3>
+                            <p>{{entry.selectedServingType}}</p>
+                        </ion-col>
+                        <ion-col>
+                            <h3 style="float:right">{{(entry.calories | number:'.1-1')}} cals</h3>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+          
+              </ion-item>
+            </ion-list>
+        </div>
+  </ion-list>
+</div>
+ 
+</ion-content>

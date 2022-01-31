@@ -1,0 +1,140 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Goals</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="container">
+
+    <div class="scroll" id="tony">
+      <form [formGroup]="goalsForm">
+        <ion-list>
+
+          <ion-grid>
+
+            <ion-row>
+
+              <ion-col>
+                <ion-item>
+                  <ion-label floating>Current Weight(kg)</ion-label>
+                  <ion-input formControlName="currentWeight" type="number" [(ngModel)]="goals.currentWeight"
+                    [class.invalid]="!goalsForm.controls.currentWeight.valid && goalsForm.controls.currentWeight.touched"
+                    placeholder="Kg"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.currentWeight">
+                    <div class="error-message"
+                      *ngIf="goalsForm.get('currentWeight').hasError(validation.type) && (goalsForm.get('currentWeight').dirty || goalsForm.get('currentWeight').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+
+              <ion-col>
+                <ion-item>
+                  <ion-label floating>Goal Weight(kg)</ion-label>
+                  <ion-input formControlName="goalWeight" type="number" [(ngModel)]="goals.goalWeight"
+                    [class.invalid]="!goalsForm.controls.goalWeight.valid && goalsForm.controls.goalWeight.touched"
+                    placeholder="Kg"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.goalWeight">
+                    <div class="error-message"
+                      *ngIf="goalsForm.get('goalWeight').hasError(validation.type) && (goalsForm.get('goalWeight').dirty || goalsForm.get('goalWeight').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+
+                <ion-item>
+                  <ion-label floating>Height(cm)</ion-label>
+
+                  <ion-input formControlName="height" type="number" [(ngModel)]="goals.height"
+                    [class.invalid]="!goalsForm.controls.height.valid && goalsForm.controls.height.touched"
+                    placeholder="cm"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.height">
+                    <div class="error-message"
+                      *ngIf="goalsForm.get('height').hasError(validation.type) && (goalsForm.get('height').dirty || goalsForm.get('height').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+              <ion-col>
+                <ion-item>
+                  <ion-label floating>Weekly Goal(kg)</ion-label>
+                  <ion-input formControlName="weeklyGoal" type="number" [(ngModel)]="goals.weeklyGoal"
+                    [class.invalid]="!goalsForm.controls.weeklyGoal.valid && goalsForm.controls.weeklyGoal.touched"
+                    placeholder="Kg"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container *ngFor="let validation of validation_messages.weeklyGoal">
+                    <div class="error-message"
+                      *ngIf="goalsForm.get('weeklyGoal').hasError(validation.type) && (goalsForm.get('weeklyGoal').dirty || goalsForm.get('weeklyGoal').touched)">
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+
+
+          <ion-item>
+            <ion-label floating>Activity Level</ion-label>
+            <ion-select formControlName="activityLevel"
+              [class.invalid]="!goalsForm.controls.activityLevel.valid && goalsForm.controls.activityLevel.touched"
+              [(ngModel)]="goals.activityLevel">
+              <ion-option value="1">Sedentary</ion-option>
+              <ion-option value="2">Lightly active</ion-option>
+              <ion-option value="3">Moderately active</ion-option>
+              <ion-option value="4">Very active</ion-option>
+              <ion-option value="5">Extremely active</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label name="goal" floating>Fitness Goal</ion-label>
+            <ion-select formControlName="goal"
+              [class.invalid]="!goalsForm.controls.goal.valid && goalsForm.controls.goal.touched"
+              [(ngModel)]="goals.goal">
+              <ion-option value="1">Maintain Weight</ion-option>
+              <ion-option value="2">Lose Weight</ion-option>
+              <ion-option value="3">Gain Weight</ion-option>
+            </ion-select>
+          </ion-item>
+
+
+
+        </ion-list>
+      </form>
+    </div>
+
+  </div>
+
+</ion-content>
+
+<div class="floating">
+  <button ion-button block gradient-left box-shadow (click)="save()" [disabled]="!goalsForm.valid">Update
+    Profile</button>
+</div>

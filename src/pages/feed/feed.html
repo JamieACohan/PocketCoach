@@ -1,0 +1,88 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Your Feed</ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-row margin class="rowStyle">
+    <button ion-button icon-only color="primary" clear (click)="addPhoto()">
+      <ion-icon name="images"></ion-icon>
+    </button>
+
+    <ion-input type="text" placeholder="Say something..." [(ngModel)]="post.content"></ion-input>
+
+
+    <button ion-button icon-only color="primary" clear (click)="postStatus()">
+      <ion-icon name="send"></ion-icon>
+    </button>
+  </ion-row>
+
+  <ion-row margin class="rowStyle" *ngIf="post.image != null">
+    <ion-card class="round-corners">
+      <img [src]="post.image" class="round-corners">
+    </ion-card>
+  </ion-row>
+
+  <ion-card *ngFor="let p of posts | async">
+
+    <ion-item-divider color="primary" *ngIf="p.trainerUID == p.ownerUID">
+      {{p.ownerName}} <ion-icon style="color:gold;" name="star"></ion-icon>
+      <ion-icon *ngIf="currentUID == p.trainerUID || currentUID == p.ownerUID" style="float:right" name="trash"
+        (click)="deletePost(p)"></ion-icon>
+    </ion-item-divider>
+
+    <ion-item-divider color="primary" *ngIf="p.trainerUID != p.ownerUID">
+      {{p.ownerName}}
+      <ion-icon *ngIf="currentUID == p.trainerUID || currentUID == p.ownerUID" style="float:right" name="trash"
+        (click)="deletePost(p)"></ion-icon>
+    </ion-item-divider>
+
+    <ion-item text-wrap>
+      {{p.content}}
+    </ion-item>
+
+    <img [src]="p.image" *ngIf="p.image">
+
+    <ion-row class="bottom-bar">
+      <ion-col>
+        <button ion-button block icon-left clear small color="primary" class="border-right" (click)="like(p)">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <small>{{p.likesCount || 0}}</small>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block icon-left clear small color="primary" class="border-right" (click)="comment(p)">
+          <ion-icon name="text"></ion-icon>
+          <small>{{p.commentsCount || 0}}</small>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button block icon-left clear small color="primary">
+          <small>{{ ago(p.timestamp) }} ago</small>
+        </button>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-card>
+
+
+  <div class="container-Empty" *ngIf="postList.length == 0">
+    <img src="../assets/imgs/noPosts.png">
+    <h2>No posts created yet.</h2>
+  </div>
+
+  <!-- <ion-infinite-scroll (ionInfinite)="loadMorePosts($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+
+</ion-content>

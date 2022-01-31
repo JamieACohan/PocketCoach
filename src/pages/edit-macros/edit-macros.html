@@ -1,0 +1,132 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Edit Macros</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+<ion-content padding>
+  <ion-list>
+    <h2 style="text-align: center">Daily Nutrition Goals</h2>
+    <ion-grid style="border: 1px solid black">
+      <ion-row>
+        <ion-col>
+          <ion-item no-lines>
+            <ion-label style="text-align: left">Calories:</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item no-lines class="item">
+
+            <ion-input type="number" (input)='calorieChange($event.target.value)' [(ngModel)]="goals.goalCalories">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-label floating>Carbs: {{goals.goalCarbs.toFixed(1)}}g</ion-label>
+      <ion-select (ionChange)="carbChange($event)" [(ngModel)]="goals.carbPercent" style="text-align: right">
+        <ion-option value="0.05">5%</ion-option>
+        <ion-option value="0.10">10%</ion-option>
+        <ion-option value="0.15">15%</ion-option>
+        <ion-option value="0.20">20%</ion-option>
+        <ion-option value="0.25">25%</ion-option>
+        <ion-option value="0.30">30%</ion-option>
+        <ion-option value="0.35">35%</ion-option>
+        <ion-option value="0.40">40%</ion-option>
+        <ion-option value="0.45">45%</ion-option>
+        <ion-option value="0.50">50%</ion-option>
+        <ion-option value="0.55">55%</ion-option>
+        <ion-option value="0.60">60%</ion-option>
+        <ion-option value="0.65">65%</ion-option>
+        <ion-option value="0.70">70%</ion-option>
+        <ion-option value="0.75">75%</ion-option>
+        <ion-option value="0.80">80%</ion-option>
+        <ion-option value="0.85">85%</ion-option>
+        <ion-option value="0.90">90%</ion-option>
+        <ion-option value="0.95">95%</ion-option>
+        <ion-option value="1">100%</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Protein: {{goals.goalProtein.toFixed(1)}}g</ion-label>
+      <ion-select (ionChange)="proteinChange($event)" [(ngModel)]="goals.proteinPercent" style="text-align: right">
+        <ion-option value="0.05">5%</ion-option>
+        <ion-option value="0.10">10%</ion-option>
+        <ion-option value="0.15">15%</ion-option>
+        <ion-option value="0.20">20%</ion-option>
+        <ion-option value="0.25">25%</ion-option>
+        <ion-option value="0.30">30%</ion-option>
+        <ion-option value="0.35">35%</ion-option>
+        <ion-option value="0.40">40%</ion-option>
+        <ion-option value="0.45">45%</ion-option>
+        <ion-option value="0.50">50%</ion-option>
+        <ion-option value="0.55">55%</ion-option>
+        <ion-option value="0.60">60%</ion-option>
+        <ion-option value="0.65">65%</ion-option>
+        <ion-option value="0.70">70%</ion-option>
+        <ion-option value="0.75">75%</ion-option>
+        <ion-option value="0.80">80%</ion-option>
+        <ion-option value="0.85">85%</ion-option>
+        <ion-option value="0.90">90%</ion-option>
+        <ion-option value="0.95">95%</ion-option>
+        <ion-option value="1">100%</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Fat: {{goals.goalFat.toFixed(1)}}g</ion-label>
+      <ion-select (ionChange)="fatChange($event)" [(ngModel)]="goals.fatPercent" style="text-align: right">
+        <ion-option value="0.05">5%</ion-option>
+        <ion-option value="0.10">10%</ion-option>
+        <ion-option value="0.15">15%</ion-option>
+        <ion-option value="0.20">20%</ion-option>
+        <ion-option value="0.25">25%</ion-option>
+        <ion-option value="0.30">30%</ion-option>
+        <ion-option value="0.35">35%</ion-option>
+        <ion-option value="0.40">40%</ion-option>
+        <ion-option value="0.45">45%</ion-option>
+        <ion-option value="0.50">50%</ion-option>
+        <ion-option value="0.55">55%</ion-option>
+        <ion-option value="0.60">60%</ion-option>
+        <ion-option value="0.65">65%</ion-option>
+        <ion-option value="0.70">70%</ion-option>
+        <ion-option value="0.75">75%</ion-option>
+        <ion-option value="0.80">80%</ion-option>
+        <ion-option value="0.85">85%</ion-option>
+        <ion-option value="0.90">90%</ion-option>
+        <ion-option value="0.95">95%</ion-option>
+        <ion-option value="1">100%</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <p>% Total</p>
+            <p>Macronutrients must equal 100%</p>
+          </ion-col>
+          <ion-col>
+            <h2 style="text-align: right; height: 10%">{{goals.percentTotal*100}}%</h2>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-item>
+  </ion-list>
+
+
+  <div padding>
+    <button ion-button (click)="saveDataToFirebase()" [disabled]="goals.percentTotal != 1" round block>
+      Save
+    </button>
+  </div>
+</ion-content>
